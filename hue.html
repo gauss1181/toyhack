@@ -1,0 +1,25 @@
+<html>
+<head>
+<script type="text/javascript">
+var changeHueColor = function(ip, lightNumber, sat, bri, hue) {
+  var formData = new FormData();
+  var xhr = new XMLHttpRequest();
+  xhr.open("PUT", "http://" + ip + "/api/newdeveloper/lights/" + lightNumber + "/state", true);
+  xhr.send(JSON.stringify({on: true, sat: sat, bri : bri, hue :hue }));
+};
+//random 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+//gen colors
+for (i = 0; i <100; i++) {
+	var h = getRandomInt(0, 65280);
+	var number = getRandomInt(1, 3);
+	var s = getRandomInt(0,255);
+	var b = getRandomInt(0,255);
+	changeHueColor("192.168.2.185", number, s, b, h);
+}
+// sat , bri , hue
+</script>
+</head>
+</html>
